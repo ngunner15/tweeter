@@ -1,0 +1,33 @@
+nav {
+  color: #ffffff;
+  height: 120px;
+  background-color: #4056A1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+ span {
+  font-family: 'Bungee', cursive;
+ }
+
+.nav-a{
+  display: flex;
+  flex-flow: column wrap;
+  margin-right: 1.5em;
+}
+
+ .tweeta{
+  flex-basis: 1.5em;
+  margin-left: 1.5em;
+  font-size: 1.65em;
+ }
+
+ .tweetb{
+  font-family: 'Source Sans Pro', sans-serif;
+ }
+
+ .fas{
+  align-self: center;
+  color: red;
+ }

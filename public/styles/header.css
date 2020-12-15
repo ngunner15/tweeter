@@ -1,0 +1,9 @@
+header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  background-image: url("../images/asfalt_large.png");
+}
