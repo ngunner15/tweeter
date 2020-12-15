@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/previous-tweet.css" type="text/css" />
 
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/0de267f503.js" crossorigin="anonymous"></script>
@@ -26,7 +27,8 @@
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-    
+    <script type="text/javascript" src="/scripts/hover-over-article.js"></script>
+
   </head>
 
   <body>
@@ -39,7 +41,7 @@
       </div>
     </nav>
 
-    <header>
+    <header class="main-page">
       <div class="img">
           <img src="/images/profile-hex.png"> 
       </div>
@@ -47,13 +49,13 @@
       <div class="name">
           <h2>Your Name</h2>
       </div>
-  </header>
+    </header>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <form action="/" method="POST">
+        <form action="/tweets" method="POST">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="form-a">
@@ -61,6 +63,29 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+
+      <section class="previous-tweet">
+        <article class="tweet">
+          <header>
+            <div>
+              <i class="far fa-meh-blank"></i>
+              <span class="person-name">Newton</span>
+            </div>
+            <span class="person-id">@SirIsaac</span>
+          </header>
+          <section class="content">
+            <p>If I have seen further it is by standing on the shoulders of giants</p>
+          </section>
+          <footer>
+            <time datetime="2015-05-16 19:00">May 16</time>
+            <div class="tweet-icons">
+              <i class="fas fa-flag"></i>
+              <i class="fas fa-retweet"></i>
+              <i class="fas fa-heart"></i>  
+            </div>
+          </footer>
+        </article>
       </section>
     </main>
   </body>
