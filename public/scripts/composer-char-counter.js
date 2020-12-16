@@ -5,12 +5,12 @@ $(document).ready(function() {
     let maxCharacters = 140;
     let remainingCharacters = maxCharacters - totalCharacters;
     output.text(remainingCharacters);
+    // add classes dynamically
     if (remainingCharacters < 0) {
-      output.css("color", "#FF0000")
+      output.addClass("color-change").css("color", "#FF0000");
     }
     if (remainingCharacters > 0) {
-      output.css("color", "#545149")
+      output.removeClass("color-change").addClass("color-revert").css("color", "#545149");
     }
-    //console.log(output);
   });
 });

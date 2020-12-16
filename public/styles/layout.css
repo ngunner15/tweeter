@@ -26,10 +26,13 @@ body {
  */
 
  body .container {
-  text-align: center;
   margin-right: 5%;
   margin-left: 5%;
   display: flex;
   flex-flow: column;
   justify-content: center;
+}
+
+body .container h2 {
+  text-align: center;
 }
