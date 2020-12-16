@@ -68,4 +68,16 @@ return $tweet;
 
 renderTweets(data);
 
+$("#new-tweet-form").on("submit", function(event) {
+  event.preventDefault();
+  //console.log($(this).serialize());
+
+  $.ajax({
+    url: "http://localhost:8080/tweets",
+    method: "POST",
+    data: $(this).serialize(),
+    dataType: "html"
+  });
+});
+
 });
