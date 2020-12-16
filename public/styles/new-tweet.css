@@ -2,6 +2,11 @@
   width: 100%;
 }
 
+.new-tweet .error {
+  color: red;
+  border : solid red;
+}
+
 .new-tweet form {
   display: flex;
   flex-flow: column wrap;

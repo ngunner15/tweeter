@@ -11,10 +11,15 @@ const renderTweets = function(tweets) {
     // calls createTweetElement for each tweet
     let $tweet = createTweetElement(tweet);
     // takes return value and appends it to the tweets container
-    $("#tweets-container").append($tweet);
+    $("#tweets-container").prepend($tweet);
   }
 }
 
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
 const createTweetElement = function(tweet) {
 let $tweet = $(`<article class="tweet">
@@ -26,7 +31,7 @@ let $tweet = $(`<article class="tweet">
                     <span class="person-id">${tweet.user.handle}</span>
                   </header>
                   <section class="content">
-                    <p>${tweet.content.text}</p>
+                    <p>${escape(tweet.content.text)}</p>
                   </section>
                   <footer>
                     <time>${tweet.created_at}</time>
@@ -47,30 +52,37 @@ $("#new-tweet-form").on("submit", function(event) {
   event.preventDefault();
   //console.log($(this).serialize());
   if ($(this).find("#tweet-text").val().length === 0) {
-    return alert("Error: enter some text");
+    return $(this).siblings("#error-underlimit").show();
   }
   if ($(this).find("#tweet-text").val().length > 140) {
-    return alert("Error: text limit surpassed");
+    return $(this).siblings("#error-overlimit").show();
   }
-
+  $(this).siblings("#error-overlimit").hide();
+  $(this).siblings("#error-underlimit").hide();
+  
   $.ajax({
     url: "http://localhost:8080/tweets",
     method: "POST",
     data: $(this).serialize(),
     dataType: "html"
+  })
+  .done(function (data) {
+    // getting the last tweet from the database
+    loadtweets("-1");
   });
+  
 });
 
-const loadtweets = function() {
+const loadtweets = function(num) {
   $.ajax({
     url: "http://localhost:8080/tweets",
     method: "GET"
   })
   .done(function (data) {
-    // getting the result from the search
+    // getting the tweets from the database
     console.log(data);
 
-    renderTweets(data);
+    renderTweets(data.slice(num));
   })
   .fail(function () {
     alert('error');
@@ -80,6 +92,6 @@ const loadtweets = function() {
   });
 }
 
-loadtweets();
+loadtweets("0");
 
 });
