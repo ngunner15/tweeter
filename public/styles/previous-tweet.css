@@ -16,7 +16,8 @@ article.tweet:hover {
 article.tweet {
   border : solid #545149;
   opacity: 0.7;
-  padding: 1em;
+  padding: 0.8em;
+  margin-bottom: 1.5em;
 }
 
 article.tweet header {
@@ -29,18 +30,19 @@ article.tweet header div {
   justify-content: flex-start;
 }
 
-article.tweet header i {
-  padding: 0.2em;
+article.tweet header img {
+  transform: scale(0.7);
 }
 
 article.tweet header .person-name {
   font-family: 'Source Sans Pro', sans-serif;
-  padding: 0.2em;
+  align-self: center;
 }
 
 article.tweet header .person-id {
   font-family: 'Source Sans Pro', sans-serif;
   opacity: 0;
+  align-self: center;
 }
 
 article.tweet .content {
