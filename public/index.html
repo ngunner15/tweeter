@@ -27,6 +27,7 @@
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="/scripts/scroll.js"></script>
 
   </head>
 
@@ -34,9 +35,12 @@
     <!-- Top nav bar (fixed) -->
     <nav>
       <span class="tweeter-logo">tweeter</span>
-      <div class="tweeter-header">
-        <span class="tweeter-main"><strong>Write</strong> a new tweet</span>
-        <i class="fas fa-angle-double-down"></i>
+      <div class="tweeter-nav">
+        <a href="#new-tweet" id="my-link">Compose</a>
+        <div class="tweeter-header">
+          <span class="tweeter-main"><strong>Write</strong> a new tweet</span>
+          <i class="fas fa-angle-double-down"></i>
+        </div>
       </div>
     </nav>
 
@@ -53,10 +57,13 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
 
-      <section class="new-tweet">
+      <section class="new-tweet" id="new-tweet">
         <h2>Compose Tweet</h2>
+
+        <!-- Custom error messages, hidden -->
         <p class="error" id="error-overlimit" hidden>Too long. Please respect our character limit.</p>
         <p class="error" id="error-underlimit" hidden>Please enter some text.</p>
+
         <form action="/tweets" method="POST" id="new-tweet-form">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>

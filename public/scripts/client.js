@@ -52,14 +52,18 @@ $("#new-tweet-form").on("submit", function(event) {
   event.preventDefault();
   //console.log($(this).serialize());
   if ($(this).find("#tweet-text").val().length === 0) {
-    return $(this).siblings("#error-underlimit").show();
+    return $(this).siblings("#error-underlimit").slideDown("slow", function () {
+      $().show();
+    });
   }
   if ($(this).find("#tweet-text").val().length > 140) {
-    return $(this).siblings("#error-overlimit").show();
+    return $(this).siblings("#error-overlimit").slideDown("slow", function () {
+      $().show();
+    });
   }
   $(this).siblings("#error-overlimit").hide();
   $(this).siblings("#error-underlimit").hide();
-  
+
   $.ajax({
     url: "http://localhost:8080/tweets",
     method: "POST",
