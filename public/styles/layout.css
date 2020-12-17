@@ -36,3 +36,26 @@ body {
 body .container h2 {
   text-align: center;
 }
+
+@media only screen and (min-width: 1024px) {
+  .columns {
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
+  }
+
+  .columns header.main-page {
+    margin-top: 10em;
+    height: 20em;
+    width: 35%;
+    background-image: url("../images/asfalt_large.png");
+    background-repeat: no-repeat;
+    align-self: flex-start;
+    position: sticky;
+    min-height: 0;
+  }
+
+  .container {
+    margin-top: 10em;
+  }
+}

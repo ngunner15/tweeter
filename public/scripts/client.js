@@ -21,6 +21,17 @@ const escape =  function(str) {
   return div.innerHTML;
 }
 
+// returns days from present
+const day = function(milliseconds) {
+  let currentMilliseconds = Date.now();
+  let now = parseInt((currentMilliseconds-milliseconds)/86400000);
+  if (now < 2) {
+    return now + " day ago";
+  } else {
+    return now + " days ago";
+  }
+}
+
 const createTweetElement = function(tweet) {
 let $tweet = $(`<article class="tweet">
                   <header>
@@ -34,7 +45,7 @@ let $tweet = $(`<article class="tweet">
                     <p>${escape(tweet.content.text)}</p>
                   </section>
                   <footer>
-                    <time>${tweet.created_at}</time>
+                    <time>${day(tweet.created_at)}</time>
                     <div class="tweet-icons">
                       <i class="fas fa-flag"></i>
                       <i class="fas fa-retweet"></i>
