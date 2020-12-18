@@ -5,6 +5,8 @@
  */
 $(document).ready(function() {
 
+  autosize($("#tweet-text"));
+
   const renderTweets = function (tweets) {
     // loops through tweets
     for (const tweet of tweets) {
