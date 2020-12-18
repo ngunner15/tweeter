@@ -15,3 +15,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+## Screenshots
+
+!["Desktop version"](https://github.com/ngunner15/tweeter/blob/master/docs/desktop_screen.png?raw=true)
+!["Mobile version"](https://github.com/ngunner15/tweeter/blob/master/docs/mobile_screen.png?raw=true)
