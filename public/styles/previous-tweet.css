@@ -4,7 +4,7 @@
   margin-bottom: 1.5em;
 }
 
-article.tweet:hover .person-id {
+article.tweet:hover .tweet-icons i {
   opacity: 0.7;
 }
 
@@ -41,7 +41,6 @@ article.tweet header .person-name {
 
 article.tweet header .person-id {
   font-family: 'Source Sans Pro', sans-serif;
-  opacity: 0;
   align-self: center;
 }
 
@@ -51,16 +50,6 @@ article.tweet .content {
   position: relative;
   border-bottom: 3px solid #545149;
 }
-
-/*article.tweet .content:before {
-  content: "";
-  position: absolute;
-  left: 2%;
-  bottom: -0.9em;
-  height: 0px;
-  width: 96%;
-  border-bottom: 3px solid #545149;
-}*/
 
 article.tweet footer {
   display: flex;
@@ -77,6 +66,7 @@ article.tweet footer .tweet-icons {
 }
 
 article.tweet footer .tweet-icons i {
+  opacity: 0;
   padding: 0.2em;
   color: #4056A1;
 }

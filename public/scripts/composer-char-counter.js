@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $("#tweet-text").on("keyup", function() {
     let totalCharacters = $(this).val().length;
-    let output = $(this).siblings().find("output");
+    let output = $(this).siblings().find("#max-character");
     let maxCharacters = 140;
     let remainingCharacters = maxCharacters - totalCharacters;
     output.text(remainingCharacters);

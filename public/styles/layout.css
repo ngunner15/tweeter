@@ -26,6 +26,7 @@ body {
  */
 
  body .container {
+  margin-top: 5em;
   margin-right: 5%;
   margin-left: 5%;
   display: flex;
@@ -33,29 +34,27 @@ body {
   justify-content: center;
 }
 
-body .container h2 {
-  text-align: center;
-}
-
 @media only screen and (min-width: 1024px) {
-  .columns {
+  body .columns {
     display: flex;
     justify-content: space-around;
-    overflow: hidden;
   }
 
-  .columns header.main-page {
+  body .columns header.main-page {
     margin-top: 10em;
     height: 20em;
     width: 35%;
     background-image: url("../images/asfalt_large.png");
     background-repeat: no-repeat;
-    align-self: flex-start;
-    position: sticky;
-    min-height: 0;
   }
 
-  .container {
+  body .container {
     margin-top: 10em;
+    max-width: 40%;
+  }
+
+  body nav {
+    background-image: none;
+    background-color: #4056A1;
   }
 }

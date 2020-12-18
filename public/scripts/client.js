@@ -5,35 +5,35 @@
  */
 $(document).ready(function() {
 
-const renderTweets = function(tweets) {
-  // loops through tweets
-  for (const tweet of tweets) {
-    // calls createTweetElement for each tweet
-    let $tweet = createTweetElement(tweet);
-    // takes return value and appends it to the tweets container
-    $("#tweets-container").prepend($tweet);
+  const renderTweets = function (tweets) {
+    // loops through tweets
+    for (const tweet of tweets) {
+      // calls createTweetElement for each tweet
+      let $tweet = createTweetElement(tweet);
+      // takes return value and appends it to the tweets container
+      $("#tweets-container").prepend($tweet);
+    }
   }
-}
 
-const escape =  function(str) {
-  let div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-}
-
-// returns days from present
-const day = function(milliseconds) {
-  let currentMilliseconds = Date.now();
-  let now = parseInt((currentMilliseconds-milliseconds)/86400000);
-  if (now < 2) {
-    return now + " day ago";
-  } else {
-    return now + " days ago";
+  const escape = function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
   }
-}
 
-const createTweetElement = function(tweet) {
-let $tweet = $(`<article class="tweet">
+  // returns days from present
+  const day = function(milliseconds) {
+    let currentMilliseconds = Date.now();
+    let now = parseInt((currentMilliseconds - milliseconds) / 86400000);
+    if (now < 2) {
+      return now + " day ago";
+    } else {
+      return now + " days ago";
+    }
+  }
+
+  const createTweetElement = function(tweet) {
+    let $tweet = $(`<article class="tweet">
                   <header>
                     <div>
                       <img src=${tweet.user.avatars} alt="alternatetext">
@@ -54,59 +54,54 @@ let $tweet = $(`<article class="tweet">
                   </footer>
                 </article>`);
 
-return $tweet;
-};
+    return $tweet;
+  };
 
-//renderTweets(data);
+  $("#new-tweet-form").on("submit", function(event) {
+    event.preventDefault();
+    //console.log($(this).serialize());
+    if ($(this).find("#tweet-text").val().length === 0) {
+      return $(this).siblings("#error-underlimit").slideDown("slow", function () {
+        $().show();
+      });
+    }
+    if ($(this).find("#tweet-text").val().length > 140) {
+      return $(this).siblings("#error-overlimit").slideDown("slow", function () {
+        $().show();
+      });
+    }
+    $(this).siblings("#error-overlimit").hide();
+    $(this).siblings("#error-underlimit").hide();
 
-$("#new-tweet-form").on("submit", function(event) {
-  event.preventDefault();
-  //console.log($(this).serialize());
-  if ($(this).find("#tweet-text").val().length === 0) {
-    return $(this).siblings("#error-underlimit").slideDown("slow", function () {
-      $().show();
-    });
-  }
-  if ($(this).find("#tweet-text").val().length > 140) {
-    return $(this).siblings("#error-overlimit").slideDown("slow", function () {
-      $().show();
-    });
-  }
-  $(this).siblings("#error-overlimit").hide();
-  $(this).siblings("#error-underlimit").hide();
+    $.ajax({
+      url: "http://localhost:8080/tweets",
+      method: "POST",
+      data: $(this).serialize(),
+      dataType: "html"
+    })
+      .done(function(data) {
+        $("#tweet-text").val('');
+        $("#max-character").val('140');
+        // getting the last tweet from the database
+        loadtweets("-1");
+      });
 
-  $.ajax({
-    url: "http://localhost:8080/tweets",
-    method: "POST",
-    data: $(this).serialize(),
-    dataType: "html"
-  })
-  .done(function (data) {
-    // getting the last tweet from the database
-    loadtweets("-1");
   });
-  
-});
 
-const loadtweets = function(num) {
-  $.ajax({
-    url: "http://localhost:8080/tweets",
-    method: "GET"
-  })
-  .done(function (data) {
-    // getting the tweets from the database
-    console.log(data);
+  const loadtweets = function(num) {
+    $.ajax({
+      url: "http://localhost:8080/tweets",
+      method: "GET"
+    })
+      .done(function(data) {
+        // getting the tweets from the database
+        renderTweets(data.slice(num));
+      })
+      .fail(function() {
+        alert('error');
+      })
+  }
 
-    renderTweets(data.slice(num));
-  })
-  .fail(function () {
-    alert('error');
-  })
-  .always(function () {
-    console.log('complete');
-  });
-}
-
-loadtweets("0");
+  loadtweets("0");
 
 });

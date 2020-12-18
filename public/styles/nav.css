@@ -1,7 +1,8 @@
 nav {
   color: #ffffff;
   height: 120px;
-  background-color: #4056A1;
+  background-image: url("../images/asfalt_large.png");
+  background-repeat: no-repeat;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,32 +12,22 @@ nav {
   z-index: 99;
 }
 
-nav .tweeter-nav {
-  display: flex;
-}
-
-nav #my-link {
-  font-weight: 600;
-  color: white;
-  text-decoration: none;
-  margin-right: 1em;
-}
-
 nav span.tweeter-logo{
   font-family: 'Bungee', cursive;
   flex-basis: 1.5em;
-  margin-left: 1.5rem;
+  margin-left: 2.5rem;
   font-size: 1.65em;
 }
 
 nav .tweeter-header{
   display: flex;
   flex-flow: column wrap;
-  margin-right: 1.5rem;
+  margin-right: 2.5rem;
 }
 
 nav div .tweeter-main{
   font-family: 'Source Sans Pro', sans-serif;
+  cursor: default;
 }
 
 nav .tweeter-header i{
