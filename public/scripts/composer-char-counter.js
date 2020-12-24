@@ -1,16 +1,16 @@
 $(document).ready(function() {
   $("#tweet-text").on("keyup", function() {
-    let totalCharacters = $(this).val().length;
-    let output = $(this).siblings().find("#max-character");
+    let $totalCharacters = $(this).val().length;
+    let $counter = $(this).siblings().find("#max-character");
     let maxCharacters = 140;
-    let remainingCharacters = maxCharacters - totalCharacters;
-    output.text(remainingCharacters);
+    let remainingCharacters = maxCharacters - $totalCharacters;
+    $counter.text(remainingCharacters);
     // add classes dynamically
     if (remainingCharacters < 0) {
-      output.addClass("color-change").css("color", "#FF0000");
+      $counter.addClass("over-the-limit");
     }
     if (remainingCharacters > 0) {
-      output.removeClass("color-change").addClass("color-revert").css("color", "#545149");
+      $counter.removeClass("over-the-limit");
     }
   });
 });
