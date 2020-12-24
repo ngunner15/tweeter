@@ -45,6 +45,7 @@
   border: 0;
   border-bottom: solid #545149;
   background-color: #f4f1ec;
+  word-wrap: break-word;
 }
 
 .new-tweet form #tweet-text:focus {
