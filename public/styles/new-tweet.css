@@ -51,3 +51,7 @@
 .new-tweet form #tweet-text:focus {
   outline: none;
 }
+
+.over-the-limit {
+  color: red;
+}
