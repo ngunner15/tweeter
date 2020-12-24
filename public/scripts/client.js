@@ -24,13 +24,31 @@ $(document).ready(function() {
   }
 
   // returns days from present
-  const day = function(milliseconds) {
+  const time = function(milliseconds) {
     let currentMilliseconds = Date.now();
-    let now = parseInt((currentMilliseconds - milliseconds) / 86400000);
-    if (now < 2) {
-      return now + " day ago";
+    let seconds = (currentMilliseconds - milliseconds) / 1000;
+    let minutes = seconds / 60;
+    let hours = minutes / 60;
+    let days = hours / 24;
+    if (seconds < 2) {
+      return parseInt(seconds) + " second ago";
+    } else if (seconds < 60) {
+      return parseInt(seconds) + " seconds ago";
+    }
+    if (minutes < 2) {
+      return parseInt(minutes) + " minute ago";
+    } else if (minutes < 60) {
+      return parseInt(minutes) + " minutes ago";
+    }
+    if (hours < 2) {
+      return parseInt(hours) + " hour ago";
+    } else if (hours < 60) {
+      return parseInt(hours) + " hours ago";
+    }
+    if (days < 2) {
+      return parseInt(days) + " day ago";
     } else {
-      return now + " days ago";
+      return parseInt(days) + " days ago";
     }
   }
 
@@ -47,7 +65,7 @@ $(document).ready(function() {
                     <p>${escape(tweet.content.text)}</p>
                   </section>
                   <footer>
-                    <time>${day(tweet.created_at)}</time>
+                    <time>${time(tweet.created_at)}</time>
                     <div class="tweet-icons">
                       <i class="fas fa-flag"></i>
                       <i class="fas fa-retweet"></i>
@@ -61,7 +79,6 @@ $(document).ready(function() {
 
   $("#new-tweet-form").on("submit", function(event) {
     event.preventDefault();
-    //console.log($(this).serialize());
     if ($(this).find("#tweet-text").val().length === 0) {
       return $(this).siblings("#error-underlimit").slideDown("slow", function () {
         $().show();
