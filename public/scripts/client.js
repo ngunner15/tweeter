@@ -42,7 +42,7 @@ $(document).ready(function() {
     }
     if (hours < 2) {
       return parseInt(hours) + " hour ago";
-    } else if (hours < 60) {
+    } else if (hours < 24) {
       return parseInt(hours) + " hours ago";
     }
     if (days < 2) {
