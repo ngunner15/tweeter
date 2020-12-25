@@ -1,0 +1,59 @@
+.new-tweet {
+  width: 100%;
+
+  p.error {
+    color: $color-red;
+    border : solid $color-red;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 1em;
+  }
+
+  form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+
+    label {
+      text-align: left;
+      font-weight: 600;
+      color: $color-font-basic;
+    }
+
+    .form-footer {
+      width: 100%;
+      margin-top: .75em;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Bungee', cursive;
+    }
+
+    button {
+      background-color: $color-banner-blue;
+      color: #ffffff;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 1px 1px 2px 3px #CCCCCC;
+      }
+    }
+
+    #tweet-text {
+      width: 100%;
+      height: 2em;
+      font-weight: 600;
+      border: 0;
+      border-bottom: solid $color-font-basic;
+      background-color: $color-background;
+      word-wrap: break-word;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
