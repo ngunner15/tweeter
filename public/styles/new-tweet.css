@@ -52,6 +52,14 @@
   outline: none;
 }
 
+.new-tweet p.error {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 1em;
+}
+
 .over-the-limit {
   color: red;
 }

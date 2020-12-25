@@ -79,18 +79,28 @@ $(document).ready(function() {
 
   $("#new-tweet-form").on("submit", function(event) {
     event.preventDefault();
+    let $errorOverLimit = $(this).siblings("#error-overlimit")
+    let $errorUnderLimit = $(this).siblings("#error-underlimit");
+    //show error messages
     if ($(this).find("#tweet-text").val().length === 0) {
-      return $(this).siblings("#error-underlimit").slideDown("slow", function () {
+      return $errorUnderLimit.slideDown("slow", function () {
         $().show();
+        $errorOverLimit.slideUp("fast");
       });
     }
     if ($(this).find("#tweet-text").val().length > 140) {
-      return $(this).siblings("#error-overlimit").slideDown("slow", function () {
+      return $errorOverLimit.slideDown("slow", function () {
         $().show();
+        $errorUnderLimit.slideUp("fast");
       });
     }
-    $(this).siblings("#error-overlimit").hide();
-    $(this).siblings("#error-underlimit").hide();
+    //hide error messages
+    $errorOverLimit.slideUp("slow", function () {
+      $().hide();
+    });
+    $errorUnderLimit.slideUp("slow", function () {
+      $().hide();
+    });
 
     $.ajax({
       url: "http://localhost:8080/tweets",
