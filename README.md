@@ -21,7 +21,14 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Screenshots
 
+### Desktop Mode
 !["Screenshot of Desktop version"](https://github.com/ngunner15/tweeter/blob/master/docs/desktop_screen.png?raw=true)
+### Desktop Mode - with back to top button visible
+As soon as you scroll down the back to top button appears
 !["Screenshot of Desktop version with back to top button"](https://github.com/ngunner15/tweeter/blob/master/docs/desktop_screen_backtotopbutton.png?raw=true)
+### Tablet Mode - with error message
+The tweet cannot be empty
 !["Screenshot of Mobile version with error message"](https://github.com/ngunner15/tweeter/blob/master/docs/mobile_screen_errormsg1.png?raw=true)
+### Tablet Mode - with error message
+The tweet cannot exceed 140 characters
 !["Screenshot of Mobile version with error message"](https://github.com/ngunner15/tweeter/blob/master/docs/mobile_screen_errormsg2.png?raw=true)
